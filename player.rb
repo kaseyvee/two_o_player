@@ -1,6 +1,6 @@
-require_relative 'game'
+require_relative 'setup'
 
-class Player < Game
+class Player < Setup
   attr_accessor :name
   attr_reader :lives
 
@@ -30,6 +30,10 @@ class Player < Game
       @lives -= 1
     else
       puts "Correctomungo :)"
+    end
+    
+    if @lives == 0
+      @@loser = true
     end
   end
 

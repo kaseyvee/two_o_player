@@ -1,27 +1,43 @@
-class Game
-  attr_accessor :round, :answer, :current_answer
+require_relative 'setup'
+require_relative 'player'
 
-  @@loser = false
-  @@current_answer = 0
+class Game < Setup
+  def play
+    game1 = Setup.new()
+    game1.initialize_game
 
-  def initialize_game
-    @round = 0
-    puts "Are you bad at math? Let's see :)"
-    puts "First to lose all 3 lives is the loser who can't do basic math! :)"
-  end
+    player1 = Player.new()
+    player1.initialize_player("player 1")
+    player1.set_name
 
-  def new_round
-    @round += 1
-    if @round == 1
-      puts "Let's get started!"
+    player2 = Player.new()
+    player2.initialize_player("player 2")
+    player2.set_name
+
+    while @@loser == false
+      game1.new_round
+
+      if @@turn == 1
+        game1.get_question
+        player1.input_answer
+        player1.correct_answer?
+      end
+
+      if @@turn == 2
+        game1.get_question
+        player2.input_answer
+        player2.correct_answer?
+      end
+
+      puts "#{player1.name}: #{player1.lives}/3 vs #{player2.name}: #{player2.lives}/3"
     end
-    puts "---------- ROUND #{@round} ----------"
-  end
 
-  def get_question
-    number1 = rand(1-9)
-    number2 = rand(1-9)
-    @@current_answer = number1 + number2
-    puts "What is #{number1} + #{number2}?"
+    if player2.lives == 0
+      puts "#{player1.name} is the winner with a score of #{player1.lives}/3!"
+    elsif player1.lives == 0
+      puts "#{player2.name} is the winner with a score #{player2.lives}/3!"
+    end
+
+    puts "Thanks for playing! Byeeeeeeeeee!!!!!!! ✌️"
   end
 end
