@@ -11,8 +11,8 @@ class Player < Setup
 
   def set_name
     puts "What's your name, #{@name}?"
-    self.name = gets.chomp
-    puts "Welcome to the game, #{self.name}!"
+    @name = gets.chomp
+    puts "Welcome to the game, #{@name}!"
   end
 
   def input_answer
