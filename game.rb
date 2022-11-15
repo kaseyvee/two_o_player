@@ -4,7 +4,7 @@ require_relative 'player'
 class Game < Setup
   def play
     game1 = Setup.new()
-    game1.initialize_game
+    game1.initialize_setup
 
     player1 = Player.new()
     player1.initialize_player("player 1")

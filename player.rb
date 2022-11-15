@@ -20,18 +20,14 @@ class Player < Setup
     @input = gets.chomp
   end
 
-  def stats
-    puts "#{@name} has #{lives}/3 lives."
-  end
-
   def correct_answer?
     if @input != @@current_answer.to_s
-      puts "Wrong! You lost 1 life."
+      puts "So close bestie! But you lost 1 life. :("
       @lives -= 1
     else
       puts "Correctomungo :)"
     end
-    
+
     if @lives == 0
       @@loser = true
     end

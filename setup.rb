@@ -2,12 +2,12 @@ class Setup
   @@loser = false
   @@current_answer = 0
 
-  def initialize_game
+  def initialize_setup
     @begin = true
     @@turn = 2
 
-    puts "Are you bad at math? Let's see :)"
-    puts "First to lose all 3 lives is the loser who can't do basic math! :)"
+    puts "Are you bad at basic addition? Let's see :)"
+    puts "First to lose all 3 lives probably tried their best! :)"
   end
 
   def new_round
